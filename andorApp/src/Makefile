@@ -6,18 +6,18 @@ include $(TOP)/configure/CONFIG
 LIBRARY_IOC_WIN32 += andorCCD
 LIBRARY_IOC_Linux += andorCCD
 LIB_SRCS += andorCCD.cpp
-LIB_SRCS += shamrock.cpp
+#LIB_SRCS += shamrock.cpp
 ifeq (win32-x86, $(findstring win32-x86, $(T_A)))
 LIB_LIBS_WIN32 += atmcd32m
 else ifeq (windows-x64, $(findstring windows-x64, $(T_A)))
 LIB_LIBS_WIN32 += atmcd64m
 endif
-LIB_LIBS_WIN32 += ShamrockCIFm
+#LIB_LIBS_WIN32 += ShamrockCIFm
 
 DATA+=GREY.PAL
 
 DBD += andorCCDSupport.dbd
-DBD += shamrockSupport.dbd
+#DBD += shamrockSupport.dbd
 
 ifdef XML2_INCLUDE
   USR_INCLUDES += $(addprefix -I, $(XML2_INCLUDE))

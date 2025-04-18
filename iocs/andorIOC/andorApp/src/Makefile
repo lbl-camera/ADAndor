@@ -15,7 +15,7 @@ PROD_IOC_Linux  += $(PROD_NAME)
 # <name>.dbd will be created from <name>Include.dbd
 DBD += $(PROD_NAME).dbd
 $(PROD_NAME)_DBD += andorCCDSupport.dbd
-$(PROD_NAME)_DBD += shamrockSupport.dbd
+#$(PROD_NAME)_DBD += shamrockSupport.dbd
 
 $(PROD_NAME)_SRCS += $(PROD_NAME)_registerRecordDeviceDriver.cpp $(PROD_NAME)Main.cpp
 
@@ -32,7 +32,7 @@ else ifneq (, $(findstring windows-x64, $(T_A)))
   WITH_GRAPHICSMAGICK=NO
   PROD_LIBS  += atmcd64m
 endif
-PROD_LIBS_WIN32 += ShamrockCIFm
+#PROD_LIBS_WIN32 += ShamrockCIFm
 
 # Test application
 #PROD_IOC_WIN32 += test_xml
@@ -42,7 +42,7 @@ PROD_LIBS_WIN32 += ShamrockCIFm
 # Note: we use PROD_SYS_LIBS because we are building statically but this library is only provided in dynamic
 # format (.so)
 PROD_SYS_LIBS_Linux += andor
-PROD_SYS_LIBS_Linux += shamrockcif
+#PROD_SYS_LIBS_Linux += shamrockcif
 
 include $(ADCORE)/ADApp/commonDriverMakefile
 

@@ -1,10 +1,11 @@
+#!/epics/modules/areadetector/ADAndor/iocs/andorIOC/bin/linux-x86_64/andorCCDApp
 < envPaths
 errlogInit(20000)
 
 dbLoadDatabase("$(TOP)/dbd/andorCCDApp.dbd")
 andorCCDApp_registerRecordDeviceDriver(pdbbase) 
 
-epicsEnvSet("PREFIX", "13ANDOR1:")
+epicsEnvSet("PREFIX", "BL7ANDOR1:")
 epicsEnvSet("PORT",   "ANDOR")
 epicsEnvSet("QSIZE",  "20")
 epicsEnvSet("XSIZE",  "2048")
@@ -17,18 +18,18 @@ epicsEnvSet("EPICS_DB_INCLUDE_PATH", "$(ADCORE)/db")
 
 # andorCCDConfig(const char *portName, const char *installPath, int cameraSerial, int shamrockID,
 #                int maxBuffers, size_t maxMemory, int priority, int stackSize)
-#andorCCDConfig("$(PORT)", "/usr/local/etc/andor/", 0, 0, 0, 0, 0 ,0)
+andorCCDConfig("$(PORT)", "/usr/local/etc/andor/", 0, 0, 0, 0, 0 ,0)
 # select the camera with serial number 1370
 #andorCCDConfig("$(PORT)", "", 1370, 0, 0, 0, 0, 0)
 # select a camera with any serial number
-andorCCDConfig("$(PORT)", "", 0, 0, 0, 0, 0, 0)
+#andorCCDConfig("$(PORT)", "", 0, 0, 0, 0, 0, 0)
 
 dbLoadRecords("$(ADANDOR)/db/andorCCD.template",   "P=$(PREFIX),R=cam1:,PORT=$(PORT),ADDR=0,TIMEOUT=1")
 
 # Comment out the following lines if there is no Shamrock spectrograph
 #shamrockConfig(const char *portName, int shamrockId, const char *iniPath, int priority, int stackSize)
-shamrockConfig("SR1", 0, "", 0, 0)
-dbLoadRecords("$(ADANDOR)/db/shamrock.template",   "P=$(PREFIX),R=sham1:,PORT=SR1,TIMEOUT=1,PIXELS=1024")
+#shamrockConfig("SR1", 0, "", 0, 0)
+#dbLoadRecords("$(ADANDOR)/db/shamrock.template",   "P=$(PREFIX),R=sham1:,PORT=SR1,TIMEOUT=1,PIXELS=1024")
 
 # Create a standard arrays plugin
 NDStdArraysConfigure("Image1", 5, 0, "$(PORT)", 0, 0)
